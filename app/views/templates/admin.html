@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>Administration</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue, {{ user.username }}!</h1>
+        <h2>Tableau de bord Admin</h2>
+        <p>Voici les tables de votre projet :</p>
+        <!-- Logique pour afficher les tables -->
+        <ul>
+            {% for table in db.metadata.tables.keys() %}
+                <li>{{ table }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Se déconnecter</a>
+    </div>
+</body>
+</html>
